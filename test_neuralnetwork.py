@@ -10,8 +10,8 @@ def test_checkboard():
     # Crée un réseau de neurones
     nn = NeuralNetwork(2)
     nn.add_layer(8, leaky_relu, leaky_relu_derivative)
-    nn.add_layer(1)
-    nn.train(X, Y, epochs=10000, learning_rate=0.01)
+    nn.add_layer(1, sigmoid, sigmoid_derivative)
+    nn.train(X, Y, epochs=1000, learning_rate=0.001)
     
     predictions = nn.predict(X)
     plt.scatter(X[:, 0], X[:, 1], c=np.round(predictions.ravel()), cmap="coolwarm")
@@ -78,7 +78,7 @@ def test_xor():
     plt.show()
 
 if __name__ == "__main__":
-    #test_checkboard()
+    test_checkboard()
     #test_circles()
-    test_sinus()
+    #test_sinus()
     #test_xor()
